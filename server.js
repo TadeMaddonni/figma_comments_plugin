@@ -90,13 +90,28 @@ app.post("/webhook", async (req, res) => {
             children: [
               {
                 object: "block",
-                type: "heading_2",
-                heading_2: {
+                type: "paragraph",
+                paragraph: {
                   rich_text: [
                     {
                       type: "text",
                       text: {
-                        content: `${triggered_by.handle} says ${comment[0]?.text}`,
+                        content: `Comment from `,
+                      },
+                    },
+                    {
+                      type: "text",
+                      text: {
+                        content: triggered_by.handle,
+                      },
+                      annotations: {
+                        bold: true,
+                      },
+                    },
+                    {
+                      type: "text",
+                      text: {
+                        content: `: "${comment[0]?.text}"`,
                       },
                     },
                   ],
